@@ -6,9 +6,9 @@ Learning Sprint turns a topic, a public course link, or attached study material 
 
 Open this folder in puppyone Desktop and tell an agent what you want to learn. For example:
 
-- “I want to learn photography basics in seven sessions. I am a beginner and have 30 minutes each time.”
-- “Help me study this English course in 14 sessions: [public URL].”
-- “Use the files I attached to create a 30-session data analysis Sprint.”
+- “Create a 7-day photography plan for a beginner. I have 30 minutes per Session.”
+- “Help me study this English course with a 14-day suggested plan: [public URL].”
+- “Use the files I attached to create a flexible 30-day data analysis Sprint.”
 
 The agent may ask only the questions needed to set a useful goal, starting level, available time, and source mode. It creates the files, prepares the first lesson, and keeps them updated. You do not need to edit CSV files, move materials, or run scripts.
 
@@ -32,15 +32,19 @@ Say “Let’s continue my Learning Sprint.” The agent reads the active Sprint
 
 ## Progress and reports
 
-Open `dashboard.html` for a simple overview. Each Sprint has `learning-report.html` with what was learned, practice and feedback, review needs, and the next lesson. If links do not open inside the Desktop HTML preview, open the named file from the project tree or ask the agent to open it.
+Open `dashboard.html` for a simple overview. Each Sprint has `learning-report.html`, which puts progress, usable knowledge, weak points, and the next step first. Completed Session records remain in the report as expandable details.
+
+**Day and Session are different.** A Day is the suggested position in a learning plan. A Session is one lesson, practice, and review cycle. You can pause between Sessions, move them to another day, or complete more than one in a day without changing the learning sequence.
+
+If links do not open inside the Desktop HTML preview, use the file path printed beside the link, open that file from the project tree, or ask the agent to open it. Navigation never depends on a clickable link alone.
 
 ## Examples
 
 `example/` contains three complete, fictional learning records:
 
-- 7-session Photography Basics — complete, created by an agent.
-- 14-session Everyday English — 6 sessions complete, based on the accessible scope of public British Council LearnEnglish pages.
-- 30-session Data Analysis Fundamentals — 5 sessions complete, using bundled public-safe example files.
+- 7-day Photography Basics — 7 of 7 Sessions complete, created by an agent.
+- 14-day Everyday English — 6 of 14 Sessions complete, based on the accessible scope of public British Council LearnEnglish pages.
+- 30-day Data Analysis Fundamentals — 5 of 30 Sessions complete, using bundled public-safe example files.
 
 Example progress is illustrative and is never copied into a new Sprint. Real learning records belong in `workspace/sprints/` and are ignored by Git by default.
 

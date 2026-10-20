@@ -44,7 +44,7 @@ def check_sprint(sprint,sample):
         if item['lesson_id'] not in ids: ERRORS.append(f'{sprint.name}: {item["mistake_id"]} has unknown lesson')
         if not (sprint/item['evidence_path']).is_file(): ERRORS.append(f'{sprint.name}: {item["mistake_id"]} has missing evidence')
     report=(sprint/'learning-report.html').read_text(encoding='utf-8') if (sprint/'learning-report.html').is_file() else ''
-    for phrase in ('Learning Overview','What I Learned','Practice &amp; Feedback','Needs Review','Next Lesson / Next Sprint'):
+    for phrase in ('Progress','Knowledge I Can Use','Focus Next','Next Step','Session Records','Review History','Day and Session'):
         if phrase not in report: ERRORS.append(f'{sprint.name}: report missing {phrase}')
     for row in done:
         if escape(row['title']) not in report: ERRORS.append(f'{sprint.name}: report missing completed lesson {row["lesson_id"]}')

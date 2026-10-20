@@ -12,8 +12,9 @@ Status meanings: **Passed** means verified in this local Work environment; **Par
 | Natural-language zero-config start | Partially Tested | In a temporary copy, the Agent-facing creator produced a five-lesson Sprint, active pointer, report, and Dashboard without manual file setup. The natural-language path in puppyone Desktop remains untested. |
 | Conversation attachment persistence | Not Tested | Must be tested in puppyone Desktop with a real attachment and a second Agent. |
 | Cross-Agent continuation | Partially Tested | A second Work Agent located the active Sprint from files alone, reviewed the recorded L01 submission, updated progress/mistakes/knowledge/handoff, adapted L02, and refreshed the report. Claude Code and a second puppyone Agent remain untested. |
-| Normal-browser HTML | Passed | Dashboard and Photography report rendered in the in-app browser; clicking the relative report link opened the correct report. Static validation checked all local links. |
-| puppyone Desktop rendering and navigation | Not Tested | Known prior evidence suggests HTML preview links may not navigate. The workflow provides project-tree and Agent alternatives. |
+| Normal-browser HTML | Passed | The examples-first Dashboard and shortened English report rendered in the in-app browser. All six completed Session records were collapsed by default, one expanded correctly, and the browser reported no console errors. Static validation checked all local links. |
+| puppyone Desktop rendering and navigation | Not Tested | Known prior evidence suggests HTML preview links may not navigate. Every important destination now also shows its project-relative file path, so the user can open it from the tree or ask an Agent. |
+| puppyone preview icon | Source Checked | The generated HTML contains no dog icon and no fixed-position element. Any fixed dog icon shown at the right edge belongs to the client preview UI and cannot be repositioned by this template. |
 | Non-developer usability | Not Tested | Requires an independent person using only README and Agent chat. |
 | Privacy and public safety | Passed | Local scan found no credentials, private keys, absolute developer paths, oversized files, real learner records, or prohibited template-brand marketing phrases. Bundled data is fictional and public-safe. |
 
