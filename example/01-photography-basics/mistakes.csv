@@ -1,0 +1,3 @@
+mistake_id,lesson_id,concept,learner_response,feedback,status,next_review,evidence_path
+M001,L01,Shutter speed for moving subjects,Preferred 1/30 s mainly to reduce ISO noise.,Protect motion sharpness first; 1/125 s was the safer option.,reviewed,Completed in L05,lessons/day-01.md
+M002,L04,Aperture and depth of field,Predicted f/8 would create more background blur.,"At the same position, f/8 generally increases depth of field compared with f/2.8.",needs_review,Next Sprint retrieval check,lessons/day-04.md

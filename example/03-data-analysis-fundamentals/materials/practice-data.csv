@@ -1,0 +1,9 @@
+order_id,date,channel,region,units,unit_price,returned
+O101,2026-09-01,web,North,2,25,no
+O102,2026-09-01,store,South,1,40,no
+O103,2026-09-02,web,North,3,15,yes
+O104,2026-09-02,partner,West,5,10,no
+O105,2026-09-03,store,,1,200,no
+O106,2026-09-03,web,East,2,30,no
+O106,2026-09-03,web,East,2,30,no
+O107,2026-09-04,store,South,4,12,yes
