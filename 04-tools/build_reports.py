@@ -67,13 +67,13 @@ def report(sprint, sample):
 
 def dashboard(sprints):
     examples=[]
-    for sprint in sorted((ROOT/'example').iterdir()):
+    for sprint in sorted((ROOT/'02-examples').iterdir()):
         info=meta(sprint/'learning-plan.md'); rows=read_rows(sprint/'progress.csv'); done=sum(r['status']=='completed' for r in rows)
-        examples.append(f'''<div class="card"><span class="label">{len(rows)}-day example</span><h3>{escape(info['title'])}</h3><p>{escape(info['goal'])}</p><p><span class="pill">{escape(info['source mode'].replace('_',' '))}</span> · {done}/{len(rows)} Sessions complete</p><p><a href="example/{escape(sprint.name)}/learning-report.html">Open learning report</a></p><p class="path-note">File: example/{escape(sprint.name)}/learning-report.html</p></div>''')
-    pointer=ROOT/'workspace'/'active-sprint.txt'
-    if pointer.is_file() and (ROOT/'workspace'/'sprints'/pointer.read_text(encoding='utf-8').strip()).is_dir():
-        sprint=ROOT/'workspace'/'sprints'/pointer.read_text(encoding='utf-8').strip(); info=meta(sprint/'learning-plan.md'); rows=read_rows(sprint/'progress.csv'); done=sum(r['status']=='completed' for r in rows); nxt=next((r for r in rows if r['status']!='completed'),None)
-        current=f'''<div class="card"><h3>{escape(info['title'])}</h3><p>{escape(info['goal'])}</p><p>{done}/{len(rows)} Sessions complete</p><p><a href="workspace/sprints/{escape(sprint.name)}/learning-report.html">Open report</a></p><p class="path-note">File: workspace/sprints/{escape(sprint.name)}/learning-report.html</p></div>'''
+        examples.append(f'''<div class="card"><span class="label">{len(rows)}-day example</span><h3>{escape(info['title'])}</h3><p>{escape(info['goal'])}</p><p><span class="pill">{escape(info['source mode'].replace('_',' '))}</span> · {done}/{len(rows)} Sessions complete</p><p><a href="02-examples/{escape(sprint.name)}/learning-report.html">Open learning report</a></p><p class="path-note">File: 02-examples/{escape(sprint.name)}/learning-report.html</p></div>''')
+    pointer=ROOT/'01-workspace'/'active-sprint.txt'
+    if pointer.is_file() and (ROOT/'01-workspace'/'sprints'/pointer.read_text(encoding='utf-8').strip()).is_dir():
+        sprint=ROOT/'01-workspace'/'sprints'/pointer.read_text(encoding='utf-8').strip(); info=meta(sprint/'learning-plan.md'); rows=read_rows(sprint/'progress.csv'); done=sum(r['status']=='completed' for r in rows); nxt=next((r for r in rows if r['status']!='completed'),None)
+        current=f'''<div class="card"><h3>{escape(info['title'])}</h3><p>{escape(info['goal'])}</p><p>{done}/{len(rows)} Sessions complete</p><p><a href="01-workspace/sprints/{escape(sprint.name)}/learning-report.html">Open report</a></p><p class="path-note">File: 01-workspace/sprints/{escape(sprint.name)}/learning-report.html</p></div>'''
         next_step=escape(nxt['next_action']) if nxt else 'Review the Sprint and choose a follow-on goal.'
         knowledge=blocks(section((sprint/'knowledge.md').read_text(encoding='utf-8'),'Demonstrated'))
     else:
@@ -85,7 +85,7 @@ def dashboard(sprints):
 
 def main():
     sprints=[]
-    for parent,sample in ((ROOT/'example',True),(ROOT/'workspace'/'sprints',False)):
+    for parent,sample in ((ROOT/'02-examples',True),(ROOT/'01-workspace'/'sprints',False)):
         for sprint in sorted(p for p in parent.iterdir() if p.is_dir()):
             if (sprint/'learning-plan.md').is_file():
                 (sprint/'learning-report.html').write_text(report(sprint,sample),encoding='utf-8'); sprints.append(sprint)

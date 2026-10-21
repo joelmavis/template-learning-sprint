@@ -1,5 +1,12 @@
 # Learning Sprint
 
+## Folder order
+
+- `01-workspace/` — the learner's active and future Sprints.
+- `02-examples/` — the 7-day, 14-day and 30-day illustrative Sprints.
+- `03-templates/` — the clean Sprint starter.
+- `04-tools/` — Sprint creation, report generation and validation utilities.
+
 Learning Sprint turns a topic, a public course link, or attached study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
 
 ## Start in one sentence
@@ -40,14 +47,14 @@ If links do not open inside the Desktop HTML preview, use the file path printed 
 
 ## Examples
 
-`example/` contains three complete, fictional learning records:
+`02-examples/` contains three complete, fictional learning records:
 
 - 7-day Photography Basics — 7 of 7 Sessions complete, created by an agent.
 - 14-day Everyday English — 6 of 14 Sessions complete, based on the accessible scope of public British Council LearnEnglish pages.
 - 30-day Data Analysis Fundamentals — 5 of 30 Sessions complete, using bundled public-safe example files.
 
-Example progress is illustrative and is never copied into a new Sprint. Real learning records belong in `workspace/sprints/` and are ignored by Git by default.
+Example progress is illustrative and is never copied into a new Sprint. Real learning records belong in `01-workspace/sprints/` and are ignored by Git by default.
 
 ## Maintainer notes
 
-Agents refresh the dashboard and reports with `python3 tools/build_reports.py` and check consistency with `python3 tools/validate_workspace.py`. These are not end-user setup steps.
+Agents refresh the dashboard and reports with `python3 04-tools/build_reports.py` and check consistency with `python3 04-tools/validate_workspace.py`. These are not end-user setup steps.

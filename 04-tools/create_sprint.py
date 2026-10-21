@@ -42,7 +42,7 @@ if not 1 <= args.lessons <= 120:
     parser.error('--lessons must be between 1 and 120')
 
 slug = safe_slug(args.slug or args.title)
-target = ROOT / 'workspace' / 'sprints' / slug
+target = ROOT / '01-workspace' / 'sprints' / slug
 if target.exists():
     raise SystemExit(f'Sprint already exists: {target.relative_to(ROOT)}')
 today = date.today().isoformat()
@@ -118,6 +118,6 @@ write(target/'handoff.md', f'''# Sprint Handoff
 | Recorded at | Agent role | Learner evidence | Files updated | Next step |
 |---|---|---|---|---|
 | {today} | Planner | No practice yet. | Initial Sprint files | Replace the L01 scaffold with a complete lesson, then teach it. |''')
-(ROOT/'workspace'/'active-sprint.txt').write_text(slug+'\n', encoding='utf-8')
-subprocess.run([sys.executable, str(ROOT/'tools'/'build_reports.py')], check=True)
-print(f'Created workspace/sprints/{slug} and set it as active.')
+(ROOT/'01-workspace'/'active-sprint.txt').write_text(slug+'\n', encoding='utf-8')
+subprocess.run([sys.executable, str(ROOT/'04-tools'/'build_reports.py')], check=True)
+print(f'Created 01-workspace/sprints/{slug} and set it as active.')

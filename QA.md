@@ -4,8 +4,8 @@ Status meanings: **Passed** means verified in this local Work environment; **Par
 
 | Check | Status | Evidence / limitation |
 |---|---|---|
-| File structure and schema | Passed | `python3 tools/validate_workspace.py` checked required files, CSV columns, stable lesson references, mistake evidence, reports, and links on 2026-10-20. |
-| Report generation | Passed | `python3 tools/build_reports.py` regenerated three example reports and `dashboard.html`. |
+| File structure and schema | Passed | `python3 04-tools/validate_workspace.py` checked required files, CSV columns, stable lesson references, mistake evidence, reports, and links on 2026-10-20. |
+| Report generation | Passed | `python3 04-tools/build_reports.py` regenerated three example reports and `dashboard.html`. |
 | Example consistency | Passed | Validator confirmed Photography 7/7, English 6/14, and Data Analysis 5/30; every completed lesson has learning content, practice, a submission, feedback, and adaptation. |
 | Public-link source boundary | Passed | British Council LearnEnglish public pages were accessible on 2026-10-20; only page scope and topic descriptions are used. Lessons and practice are original. |
 | Bundled-file learning path | Passed | The data-analysis example uses original `materials/course-notes.md` and `practice-data.csv`; the first five reviewed lessons are consistent with those files. This does not prove conversation-upload persistence. |
@@ -25,7 +25,7 @@ Do not upgrade a status without recording the environment and observable result.
 Tested in a temporary copy on 2026-10-20:
 
 1. The first Agent created a five-lesson `Decision Writing` Sprint and recorded an L01 learner submission.
-2. A second Agent was told only the temporary workspace path. It followed `AGENTS.md`, resolved `workspace/active-sprint.txt`, and read the latest Sprint handoff.
+2. A second Agent was told only the temporary workspace path. It followed `AGENTS.md`, resolved `01-workspace/active-sprint.txt`, and read the latest Sprint handoff.
 3. It marked L01 `completed / reviewed / emerging`, explained why three informal reactions did not support a full rollout, and identified the one-sided trade-off.
 4. It created M001 and M002, updated `knowledge.md`, prepared L02 around evidence calibration, advanced the active lesson, regenerated HTML, and passed validation.
 

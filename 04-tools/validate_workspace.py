@@ -8,6 +8,10 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 ERRORS=[]
+for name in ('01-workspace','02-examples','03-templates','04-tools'):
+    if not (ROOT/name).is_dir(): ERRORS.append(f'missing ordered directory: {name}')
+for name in ('workspace','example','templates','tools'):
+    if (ROOT/name).exists(): ERRORS.append(f'legacy unnumbered directory remains: {name}')
 PROGRESS=['lesson_id','title','status','practice_status','mastery_status','score','completed_at','evidence_path','next_action']
 MISTAKES=['mistake_id','lesson_id','concept','learner_response','feedback','status','next_review','evidence_path']
 EXPECTED={'01-photography-basics':(7,7),'02-everyday-english':(14,6),'03-data-analysis-fundamentals':(30,5)}
@@ -53,7 +57,7 @@ def check_sprint(sprint,sample):
     if not sample and sample_note in report: ERRORS.append(f'{sprint.name}: real report contains sample disclosure')
     return len(progress),len(done)
 
-examples=ROOT/'example'
+examples=ROOT/'02-examples'
 if not examples.is_dir(): ERRORS.append('missing example directory')
 found={p.name for p in examples.iterdir() if p.is_dir()} if examples.is_dir() else set()
 if found!=set(EXPECTED): ERRORS.append(f'example inventory differs: {sorted(found)}')
@@ -62,7 +66,7 @@ for name,counts in EXPECTED.items():
     if sprint.is_dir():
         actual=check_sprint(sprint,True)
         if actual!=counts: ERRORS.append(f'{name}: expected {counts[1]}/{counts[0]} completed, found {actual[1]}/{actual[0]}')
-for sprint in (ROOT/'workspace'/'sprints').iterdir():
+for sprint in (ROOT/'01-workspace'/'sprints').iterdir():
     if sprint.is_dir(): check_sprint(sprint,False)
 
 english=(examples/'02-everyday-english'/'sources.md')

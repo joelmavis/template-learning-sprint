@@ -1,6 +1,6 @@
 .DS_Store
 __pycache__/
 *.py[cod]
-workspace/active-sprint.txt
-workspace/sprints/*
-!workspace/sprints/.gitkeep
+01-workspace/active-sprint.txt
+01-workspace/sprints/*
+!01-workspace/sprints/.gitkeep
