@@ -14,8 +14,8 @@ The package is ready for a public repository update.
 ## Verified locally
 
 - Required Markdown, CSV, HTML, source, and handoff files are present.
-- The Dashboard and three isolated fixture reports regenerate without third-party packages; fixtures do not appear in the starting workspace or Dashboard.
-- Completed lessons have recorded practice, learner submissions, feedback, mastery boundaries, and adaptations.
+- The clean-start Dashboard regenerates without third-party packages, and no sample courses or test learner records are committed.
+- A disposable smoke test creates an active Sprint, checks report and validation behavior, confirms release mode blocks populated learner data, and removes the temporary copy afterward.
 - A five-lesson Sprint can be created in a clean copy without manual file setup.
 - A second Work Agent continued from shared files, reviewed a submission, updated the learning record, adapted the next lesson, and regenerated the report.
 - Dashboard and report render in a normal browser, and the relative report link works.

@@ -101,12 +101,11 @@ def dashboard():
 
 def main():
     sprints=[]
-    for parent,sample in ((ROOT/'05-tests'/'fixtures'/'sprints',True),(ROOT/'01-workspace'/'sprints',False)):
-        for sprint in sorted(p for p in parent.iterdir() if p.is_dir()):
-            if (sprint/'learning-plan.md').is_file():
-                (sprint/'learning-report.html').write_text(report(sprint,sample),encoding='utf-8'); sprints.append(sprint)
+    parent=ROOT/'01-workspace'/'sprints'
+    for sprint in sorted(p for p in parent.iterdir() if p.is_dir()):
+        if (sprint/'learning-plan.md').is_file():
+            (sprint/'learning-report.html').write_text(report(sprint,False),encoding='utf-8'); sprints.append(sprint)
     (ROOT/'dashboard.html').write_text(dashboard(),encoding='utf-8')
-    fixture_count=sum(str(sprint).startswith(str(ROOT/'05-tests')) for sprint in sprints)
-    print(f'Refreshed {len(sprints)-fixture_count} user learning reports, {fixture_count} isolated fixture reports, and dashboard.html.')
+    print(f'Refreshed {len(sprints)} user learning reports and dashboard.html.')
 
 if __name__=='__main__': main()

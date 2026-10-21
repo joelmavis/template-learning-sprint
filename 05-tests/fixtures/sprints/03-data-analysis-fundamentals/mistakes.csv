@@ -1,5 +1,0 @@
-mistake_id,lesson_id,concept,learner_response,feedback,status,next_review,evidence_path
-M001,L01,Identifier role,Classified order_id only as text.,Treat it as an identifier and test uniqueness at the declared grain.,reviewed,Applied in L03,lessons/day-01.md
-M002,L02,Metric alignment,Used average unit price for “best channel.”,Define performance as a decision-relevant outcome such as gross revenue.,needs_review,L06 chart title and metric definition,lessons/day-02.md
-M003,L03,Missing data handling,Proposed deleting O105 because region was blank.,Retain it for channel totals; label region Unknown for regional analysis.,reviewed,Applied in L04,lessons/day-03.md
-M004,L04,Deduplication before aggregation,Web revenue = 215.,O106 was counted twice; deduplicated web revenue is 155.,needs_review,Recalculate before L06,lessons/day-04.md

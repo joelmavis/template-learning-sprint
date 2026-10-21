@@ -1,7 +1,0 @@
-mistake_id,lesson_id,concept,learner_response,feedback,status,next_review,evidence_path
-M001,L01,Be verb in origin statement,I from Seoul.,Use “I’m from Seoul.”,reviewed,L07 retrieval,lessons/day-01.md
-M002,L02,Adverb form,more slow,Use “more slowly” to modify speak or say.,needs_review,L07 retrieval,lessons/day-02.md
-M003,L03,Born phrase and question order,I born; What it is like?,Use “I was born”; “What is it like?”,needs_review,L07 retrieval,lessons/day-03.md
-M004,L04,Third-person present simple,she wake; she go; she check,"Use wakes, goes, checks.",needs_review,L07 retrieval,lessons/day-04.md
-M005,L05,How about + gerund,How about meet,Use “How about meeting …?”,needs_review,L07 retrieval,lessons/day-05.md
-M006,L06,Good at,good in design systems,Use “good at” with a noun or verb-ing form.,needs_review,L07 retrieval,lessons/day-06.md

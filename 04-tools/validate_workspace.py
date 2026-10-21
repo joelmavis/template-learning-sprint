@@ -16,7 +16,6 @@ for name in ('workspace','example','templates','tools'):
     if (ROOT/name).exists(): ERRORS.append(f'legacy unnumbered directory remains: {name}')
 PROGRESS=['lesson_id','title','status','practice_status','mastery_status','score','completed_at','evidence_path','next_action']
 MISTAKES=['mistake_id','lesson_id','concept','learner_response','feedback','status','next_review','evidence_path']
-EXPECTED={'01-photography-basics':(7,7),'02-everyday-english':(14,6),'03-data-analysis-fundamentals':(30,5)}
 
 def rows(path,fields):
     try:
@@ -75,25 +74,8 @@ def check_sprint(sprint,sample):
     if not sample and sample_note in report: ERRORS.append(f'{sprint.name}: real report contains sample disclosure')
     return len(progress),len(done)
 
-fixtures=ROOT/'05-tests'/'fixtures'/'sprints'
-if not fixtures.is_dir(): ERRORS.append('missing isolated fixture directory')
-found={p.name for p in fixtures.iterdir() if p.is_dir()} if fixtures.is_dir() else set()
-if found!=set(EXPECTED): ERRORS.append(f'fixture inventory differs: {sorted(found)}')
-for name,counts in EXPECTED.items():
-    sprint=fixtures/name
-    if sprint.is_dir():
-        actual=check_sprint(sprint,True)
-        if actual!=counts: ERRORS.append(f'{name}: expected {counts[1]}/{counts[0]} completed, found {actual[1]}/{actual[0]}')
 USER_SPRINTS=[sprint for sprint in (ROOT/'01-workspace'/'sprints').iterdir() if sprint.is_dir()]
 USER_COUNTS=[check_sprint(sprint,False) for sprint in USER_SPRINTS]
-
-english=(fixtures/'02-everyday-english'/'sources.md')
-if english.is_file():
-    text=english.read_text(encoding='utf-8')
-    if text.count('https://learnenglish.britishcouncil.org/')<3 or 'Accessed 2026-10-20' not in text or 'does not claim access' not in text:
-        ERRORS.append('English fixture lacks public-source access boundary')
-for rel in ('materials/course-notes.md','materials/practice-data.csv'):
-    if not (fixtures/'03-data-analysis-fundamentals'/rel).is_file(): ERRORS.append(f'Data fixture missing {rel}')
 
 dashboard=(ROOT/'dashboard.html').read_text(encoding='utf-8') if (ROOT/'dashboard.html').is_file() else ''
 if re.search(r'Explore the Examples|02-examples|Illustrative learning record',dashboard,re.I): ERRORS.append('dashboard exposes fixture or sample content')
@@ -119,7 +101,7 @@ for document in ROOT.rglob('*'):
 if ERRORS:
     print('FAILED'); print('\n'.join(ERRORS)); sys.exit(1)
 user_lessons=sum(total for total,_ in USER_COUNTS); user_done=sum(done for _,done in USER_COUNTS)
-print(f'PASSED User Workspace Mode: {len(USER_SPRINTS)} user Sprints / {user_done}/{user_lessons} completed Sessions; 3 isolated fixtures (Photography 7/7, English 6/14, Data Analysis 5/30); lesson evidence, name-first reports, empty state, sources, and links checked.')
+print(f'PASSED User Workspace Mode: {len(USER_SPRINTS)} user Sprints / {user_done}/{user_lessons} completed Sessions; lesson evidence, name-first reports, empty state, sources, and links checked.')
 if (ROOT/'.git').exists():
     remote=subprocess.run(['git','remote','get-url','origin'],cwd=ROOT,capture_output=True,text=True)
     if remote.returncode==0 and any(host in remote.stdout for host in ('github.com','gitlab.com')):

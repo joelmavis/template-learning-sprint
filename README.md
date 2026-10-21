@@ -5,7 +5,7 @@
 - `01-workspace/` — the learner's active and future Sprints.
 - `03-templates/` — the clean Sprint starter.
 - `04-tools/` — Sprint creation, report generation and validation utilities.
-- `05-tests/` — isolated maintainer fixtures; not part of the starting workspace.
+- `05-tests/` — a temporary-workspace smoke test; it does not contain sample courses.
 
 Learning Sprint turns a topic, a public course link, or attached study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
 
@@ -53,7 +53,7 @@ If links do not open inside the Desktop HTML preview, use the file path printed 
 
 The Dashboard starts empty and guides you to create the first Sprint through Agent chat. Real learning records belong in `01-workspace/sprints/` and are ignored by Git by default.
 
-Maintainer regression data lives under `05-tests/fixtures/`. It checks the three source modes, different progress states, and report generation without appearing in the Dashboard or being copied into a learner Sprint.
+The public repository does not include sample courses or committed learner records. `05-tests/smoke_test.py` creates a disposable local copy, starts a temporary Sprint, checks report generation and daily validation, confirms that release mode blocks the populated copy, and then removes the temporary data automatically.
 
 ## Maintainer notes
 
