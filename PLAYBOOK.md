@@ -44,4 +44,10 @@ Update `progress.csv`, `mistakes.csv`, `knowledge.md`, the next lesson, `handoff
 
 ## Report language
 
-Reports must show the actual goal, source mode, progress, knowledge, representative practice, feedback, unresolved mistakes, and next step. They must be independently readable and must not replace substance with “see file.”
+Reports must show the actual goal, source mode, progress, knowledge, representative practice, feedback, unresolved mistakes, and next step. They must be independently readable and must not replace substance with “see file.” Lead with course, lesson, knowledge-point, and mistake names; keep stable IDs secondary.
+
+## Validation modes
+
+During normal learning, regenerate reports and run `python3 04-tools/validate_workspace.py`. This daily check accepts active, partially completed, and completed personal Sprints.
+
+`python3 04-tools/check_public_release.py` is reserved for maintainers preparing a blank public template. Run it from a clean release copy, not after each lesson. A release failure must never be resolved by deleting learner submissions, feedback, mistakes, knowledge, or handoff history.

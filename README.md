@@ -3,9 +3,9 @@
 ## Folder order
 
 - `01-workspace/` — the learner's active and future Sprints.
-- `02-examples/` — the 7-day, 14-day and 30-day illustrative Sprints.
 - `03-templates/` — the clean Sprint starter.
 - `04-tools/` — Sprint creation, report generation and validation utilities.
+- `05-tests/` — isolated maintainer fixtures; not part of the starting workspace.
 
 Learning Sprint turns a topic, a public course link, or attached study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
 
@@ -45,16 +45,19 @@ Open `dashboard.html` for a simple overview. Each Sprint has `learning-report.ht
 
 If links do not open inside the Desktop HTML preview, use the file path printed beside the link, open that file from the project tree, or ask the agent to open it. Navigation never depends on a clickable link alone.
 
-## Examples
+## Clean starting workspace
 
-`02-examples/` contains three complete, fictional learning records:
+The Dashboard starts empty and guides you to create the first Sprint through Agent chat. Real learning records belong in `01-workspace/sprints/` and are ignored by Git by default.
 
-- 7-day Photography Basics — 7 of 7 Sessions complete, created by an agent.
-- 14-day Everyday English — 6 of 14 Sessions complete, based on the accessible scope of public British Council LearnEnglish pages.
-- 30-day Data Analysis Fundamentals — 5 of 30 Sessions complete, using bundled public-safe example files.
-
-Example progress is illustrative and is never copied into a new Sprint. Real learning records belong in `01-workspace/sprints/` and are ignored by Git by default.
+Maintainer regression data lives under `05-tests/fixtures/`. It checks the three source modes, different progress states, and report generation without appearing in the Dashboard or being copied into a learner Sprint.
 
 ## Maintainer notes
 
 Agents refresh the dashboard and reports with `python3 04-tools/build_reports.py` and check consistency with `python3 04-tools/validate_workspace.py`. These are not end-user setup steps.
+
+## Two validation modes
+
+- **User Workspace Mode** is the normal learning workflow. `python3 04-tools/validate_workspace.py` accepts populated personal Sprints and checks lesson evidence, reports, mistakes, sources, and links.
+- **Template Release Mode** is only for maintainers preparing the blank public template. `python3 04-tools/check_public_release.py` intentionally blocks active Sprints, learner records, and a Dashboard generated from personal work.
+
+Agents must not run Template Release Mode after each lesson and must never delete learner records to make it pass. If this folder still points to GitHub or GitLab, move personal learning work to a private copy before adding submissions or attachments.
