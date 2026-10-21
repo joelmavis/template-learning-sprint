@@ -19,6 +19,8 @@ Before teaching or editing, read `PLAYBOOK.md`, `01-workspace/active-sprint.txt`
 - After any status change, update the lesson, `progress.csv`, `mistakes.csv`, `knowledge.md`, `handoff.md`, and `learning-report.html` as applicable. Run `04-tools/build_reports.py` and the daily `04-tools/validate_workspace.py` before claiming the update is complete. Do not run the public-release checker during normal learning.
 - Never publish private attachments, personal learning records, credentials, or licensed course content.
 - In user-facing HTML, lead with the Sprint title, lesson title, knowledge-point name, and mistake concept or question. Keep stable lesson and mistake IDs in CSV/Markdown and show them only as secondary traceability details. Day and Session labels may remain when they clarify sequence.
+- Treat HTML as the readable learning record. Show the current practice and a simple answer format, but direct the learner to submit in the Agent conversation so the Agent can preserve the response, review it, and update the Sprint. Do not make a preview link or local form the only submission route.
+- Populate My Knowledge only from reviewed learner evidence: demonstrated knowledge, developing knowledge, and concepts that need review. Do not copy lesson content into My Knowledge merely because it was displayed or read.
 
 ## Starting a Sprint
 

@@ -41,6 +41,10 @@ Say “Let’s continue my Learning Sprint.” The agent reads the active Sprint
 
 Open `dashboard.html` for a simple overview. Each Sprint has `learning-report.html`, which puts progress, usable knowledge, weak points, and the next step first. Completed Session records remain in the report as expandable details.
 
+The report shows the current practice and a simple answer format. Submit answers in the Agent conversation; the Agent records the actual response, provides feedback, and updates the next Session. The HTML report is a readable record, not a separate form, so the workflow does not depend on preview links or local form storage.
+
+**My Knowledge** is evidence-based. It shows what reviewed practice has demonstrated, what is still developing, and what needs review. Lesson content does not appear there merely because it was displayed or read.
+
 **Day and Session are different.** A Day is the suggested position in a learning plan. A Session is one lesson, practice, and review cycle. You can pause between Sessions, move them to another day, or complete more than one in a day without changing the learning sequence.
 
 If links do not open inside the Desktop HTML preview, use the file path printed beside the link, open that file from the project tree, or ask the agent to open it. Navigation never depends on a clickable link alone.

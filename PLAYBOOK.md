@@ -18,6 +18,8 @@ Teach the current lesson directly in the conversation and preserve the complete 
 
 Ask for an observable response: answer, explanation, corrected sentence, calculation, or uploaded work. Record the actual submission under `## Learner submission`. If nothing was submitted, keep the practice open.
 
+The HTML report may display the practice and an answer template, but submission happens in the Agent conversation. Do not require a separate answer page or assume that a local HTML form can write learning records.
+
 **Complete when:** a real submission exists in the Sprint record.
 
 ## 4. Review

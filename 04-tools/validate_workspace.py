@@ -56,6 +56,11 @@ def check_sprint(sprint,sample):
     if re.search(r'<th[^>]*>\s*ID\s*</th>',report,re.I): ERRORS.append(f'{sprint.name}: report uses ID as a primary column')
     for phrase in ('Progress','Knowledge I Can Use','Focus Next','Next Step','Session Records','Review History','Day and Session'):
         if phrase not in report: ERRORS.append(f'{sprint.name}: report missing {phrase}')
+    if len(done)<len(progress):
+        for phrase in ('Practice task','Submit in Agent chat','The HTML report is for reading and progress review'):
+            if phrase not in report: ERRORS.append(f'{sprint.name}: unfinished Sprint lacks answer guidance: {phrase}')
+    if 'My Knowledge reflects reviewed learner evidence' not in report:
+        ERRORS.append(f'{sprint.name}: report does not explain My Knowledge evidence boundary')
     for row in done:
         if escape(row['title']) not in report: ERRORS.append(f'{sprint.name}: report missing completed lesson {row["lesson_id"]}')
         expected=f"<summary><span>{escape(row['title'])}<small class=\"record-id\">Internal lesson ID: {escape(row['lesson_id'])}"
@@ -93,6 +98,10 @@ for rel in ('materials/course-notes.md','materials/practice-data.csv'):
 dashboard=(ROOT/'dashboard.html').read_text(encoding='utf-8') if (ROOT/'dashboard.html').is_file() else ''
 if re.search(r'Explore the Examples|02-examples|Illustrative learning record',dashboard,re.I): ERRORS.append('dashboard exposes fixture or sample content')
 if not USER_SPRINTS and 'Start your first Learning Sprint' not in dashboard: ERRORS.append('dashboard lacks first-Sprint empty state')
+if USER_SPRINTS and any(done<total for total,done in USER_COUNTS) and 'Submit in Agent chat' not in dashboard:
+    ERRORS.append('dashboard does not direct unfinished practice to Agent chat')
+if USER_SPRINTS and 'Lesson content alone is not counted as learned knowledge' not in dashboard:
+    ERRORS.append('dashboard does not explain My Knowledge evidence boundary')
 
 for document in ROOT.rglob('*.html'):
     text=document.read_text(encoding='utf-8')
