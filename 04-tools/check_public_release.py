@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that a Learning Sprint copy is safe to publish as a blank template."""
+"""Check that a Daily Learning copy is safe to publish as a blank template."""
 import argparse
 from pathlib import Path
 import re

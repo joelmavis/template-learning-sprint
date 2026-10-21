@@ -1,4 +1,4 @@
-# Learning Sprint v1.0 — Release Readiness
+# Daily Learning v1.0 — Release Readiness
 
 ## Package status
 
@@ -6,9 +6,9 @@ The package is ready for a public repository update.
 
 - Suggested repository: `template-learning-sprint`
 - Suggested license: MIT (included)
-- Product name: Learning Sprint
+- Product name: Daily Learning
 - Main workflow: Plan → Learn → Practise → Review → Adapt
-- Input modes: agent-generated topic, public course link, and attached files
+- Input modes: Agent-generated course and local files or attachments
 - Starting state: empty learner workspace with a guided first-Sprint prompt
 
 ## Verified locally

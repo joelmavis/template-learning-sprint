@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Learning Sprint structure, evidence relationships, reports, and links."""
+"""Validate Daily Learning structure, evidence relationships, reports, and links."""
 from pathlib import Path
 from html import escape, unescape
 import csv
@@ -79,7 +79,7 @@ USER_COUNTS=[check_sprint(sprint,False) for sprint in USER_SPRINTS]
 
 dashboard=(ROOT/'dashboard.html').read_text(encoding='utf-8') if (ROOT/'dashboard.html').is_file() else ''
 if re.search(r'Explore the Examples|02-examples|Illustrative learning record',dashboard,re.I): ERRORS.append('dashboard exposes fixture or sample content')
-if not USER_SPRINTS and 'Start your first Learning Sprint' not in dashboard: ERRORS.append('dashboard lacks first-Sprint empty state')
+if not USER_SPRINTS and 'Start your first learning plan' not in dashboard: ERRORS.append('dashboard lacks first-Sprint empty state')
 if USER_SPRINTS and any(done<total for total,done in USER_COUNTS) and 'Submit in Agent chat' not in dashboard:
     ERRORS.append('dashboard does not direct unfinished practice to Agent chat')
 if USER_SPRINTS and 'Lesson content alone is not counted as learned knowledge' not in dashboard:

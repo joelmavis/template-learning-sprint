@@ -1,4 +1,4 @@
-# Learning Sprint
+# Daily Learning
 
 ## Folder order
 
@@ -7,14 +7,13 @@
 - `04-tools/` — Sprint creation, report generation and validation utilities.
 - `05-tests/` — a temporary-workspace smoke test; it does not contain sample courses.
 
-Learning Sprint turns a topic, a public course link, or attached study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
+Daily Learning turns a learning goal or local study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
 
 ## Start in one sentence
 
 Open this folder in puppyone Desktop and tell an agent what you want to learn. For example:
 
 - “Create a 7-day photography plan for a beginner. I have 30 minutes per Session.”
-- “Help me study this English course with a 14-day suggested plan: [public URL].”
 - “Use the files I attached to create a flexible 30-day data analysis Sprint.”
 
 The agent may ask only the questions needed to set a useful goal, starting level, available time, and source mode. It creates the files, prepares the first lesson, and keeps them updated. You do not need to edit CSV files, move materials, or run scripts.
@@ -29,13 +28,14 @@ A lesson is not complete just because time passed. Your practice must be submitt
 
 ## Continue later or switch agents
 
-Say “Let’s continue my Learning Sprint.” The agent reads the active Sprint, the latest lesson, progress, mistakes, knowledge notes, and handoff before continuing. A different compatible file-based agent can use those same records; you should not have to explain the history again.
+Say “Let’s continue Daily Learning.” The agent reads the active Sprint, the latest lesson, progress, mistakes, knowledge notes, and handoff before continuing. A different compatible file-based agent can use those same records; you should not have to explain the history again.
 
-## Three ways to learn
+## Two ways to start
 
-- **Learn a topic:** the agent creates an original course for your goal.
-- **Learn from a link:** the agent records what it could actually access, links the source, and never claims to have read blocked or paid material.
-- **Learn from files:** attach material in the Agent conversation. The agent records which files it could read and preserves only the material you authorize. Attachment persistence and cross-agent visibility depend on the client; see `QA.md` for the tested boundary.
+- **Agent-generated course:** describe what you want to learn and the agent creates an original course for your goal.
+- **Local files:** attach or select local material in the Agent conversation. The agent records which files it could read and preserves only the material you authorize. Attachment persistence and cross-agent visibility depend on the client; see `QA.md` for the tested boundary.
+
+Daily Learning is local-first. Pasting a URL is not a separate course-input mode; save or export material as a local file when you want it used as course source material.
 
 ## Progress and reports
 

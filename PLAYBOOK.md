@@ -1,8 +1,8 @@
-# Learning Sprint Playbook
+# Daily Learning Playbook
 
 ## 1. Plan
 
-**Trigger:** The user names a topic, provides a public course URL, or uploads learning material.
+**Trigger:** The user names a learning goal or provides local learning material.
 
 Confirm only the goal, starting level, available time, approximate sessions, and source mode that are not already clear. Create the Sprint and write `learning-plan.md`, `sources.md`, lesson rows in `progress.csv`, empty mistake and knowledge records, and a first complete lesson.
 
@@ -36,7 +36,6 @@ Update `progress.csv`, `mistakes.csv`, `knowledge.md`, the next lesson, `handoff
 
 ## Recovery rules
 
-- **Link unavailable:** record the failed access and ask for an accessible page, outline, or attached material. Offer an original course only with the user's agreement.
 - **Attachment unreadable or not persistent:** say what failed. Ask the user to reattach it or authorize a readable extract to be saved in the Sprint. Do not imply another Agent can see it until verified.
 - **No practice submitted:** leave the lesson in progress and resume at practice next time.
 - **Long break:** resume the earliest incomplete step; use a short retrieval check before new material.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a real Learning Sprint scaffold for an Agent to finish and teach."""
+"""Create a real Daily Learning Sprint scaffold for an Agent to finish and teach."""
 from argparse import ArgumentParser
 from datetime import date
 from pathlib import Path
@@ -31,7 +31,7 @@ def table(path, fields, rows):
 parser = ArgumentParser()
 parser.add_argument('--title', required=True)
 parser.add_argument('--goal', required=True)
-parser.add_argument('--mode', required=True, choices=['agent_generated','public_link','attached_files'])
+parser.add_argument('--mode', required=True, choices=['agent_generated','attached_files'])
 parser.add_argument('--lessons', required=True, type=int)
 parser.add_argument('--minutes', type=int, default=30)
 parser.add_argument('--level', default='Not recorded')

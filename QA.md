@@ -1,4 +1,4 @@
-# Learning Sprint v1.0 — QA
+# Daily Learning v1.0 — QA
 
 Status meanings: **Passed** means verified in this local Work environment; **Partially Tested** means only part of the path was exercised; **Not Tested** means no claim is made.
 
