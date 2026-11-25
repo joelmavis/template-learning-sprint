@@ -303,6 +303,13 @@ details.lesson summary{
 details.lesson[open] summary{border-bottom:1px solid rgba(16,36,30,.1);background:rgba(233,243,240,.55)}
 .lesson-body{padding:16px}
 .lesson-body p{margin:0 0 10px}
+.md-h{margin:16px 0 8px;font-size:15px;font-weight:750;color:var(--ink);letter-spacing:-.01em}
+.md-h5{margin:12px 0 6px;font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+.md-quote{margin:10px 0;padding:10px 14px;border-left:3px solid var(--accent-2);background:rgba(233,243,240,.65);border-radius:0 10px 10px 0;color:var(--ink-soft);font-size:13px}
+.md-pre{margin:10px 0;padding:12px 14px;border-radius:12px;background:#112922;color:#eefaf5;overflow:auto;font:12.5px/1.55 var(--mono)}
+.md-pre code{background:transparent;color:inherit;padding:0}
+.md-ol,.md-ul{margin:6px 0 12px;padding-left:20px}
+.md-ol li,.md-ul li{margin:5px 0;line-height:1.58}
 .pill{
   display:inline-flex;align-items:center;border-radius:999px;padding:3px 10px;
   font-size:11.5px;font-weight:700;background:var(--accent-soft);color:var(--accent);white-space:nowrap;
@@ -590,25 +597,70 @@ def count_knowledge_items(text, name):
 def blocks(value):
     parts = []
     bullets = []
+    ordered = []
+    in_code = False
+    code_lines = []
 
     def inline(text):
-        return re.sub(r'`([^`]+)`', r'<code>\1</code>', escape(text))
+        escaped = escape(text)
+        escaped = re.sub(r'`([^`]+)`', r'<code>\1</code>', escaped)
+        escaped = re.sub(r'\*\*([^*]+?)\*\*', r'<strong>\1</strong>', escaped)
+        escaped = re.sub(r'__([^_]+?)__', r'<strong>\1</strong>', escaped)
+        escaped = re.sub(r'(?<!\*)\*([^*\n]+?)\*(?!\*)', r'<em>\1</em>', escaped)
+        return escaped
 
     def flush():
-        nonlocal bullets
+        nonlocal bullets, ordered
         if bullets:
-            parts.append('<ul>' + ''.join(f'<li>{inline(x)}</li>' for x in bullets) + '</ul>')
+            parts.append('<ul class="md-ul">' + ''.join(f'<li>{inline(x)}</li>' for x in bullets) + '</ul>')
             bullets = []
+        if ordered:
+            parts.append('<ol class="md-ol">' + ''.join(f'<li>{inline(x)}</li>' for x in ordered) + '</ol>')
+            ordered = []
 
     for raw in value.splitlines():
-        line = raw.strip()
-        if line.startswith('- '):
-            bullets.append(line[2:])
-        elif not line:
+        stripped = raw.strip()
+        if stripped.startswith('```'):
             flush()
+            if in_code:
+                parts.append('<pre class="md-pre"><code>' + escape('\n'.join(code_lines)) + '</code></pre>')
+                code_lines = []
+                in_code = False
+            else:
+                in_code = True
+            continue
+        if in_code:
+            code_lines.append(raw)
+            continue
+        if not stripped:
+            flush()
+            continue
+        if stripped.startswith('#### '):
+            flush()
+            parts.append(f'<h5 class="md-h5">{inline(stripped[5:])}</h5>')
+        elif stripped.startswith('### '):
+            flush()
+            parts.append(f'<h4 class="md-h">{inline(stripped[4:])}</h4>')
+        elif stripped.startswith('## '):
+            flush()
+            parts.append(f'<h4 class="md-h">{inline(stripped[3:])}</h4>')
+        elif stripped.startswith('> '):
+            flush()
+            parts.append(f'<blockquote class="md-quote">{inline(stripped[2:])}</blockquote>')
+        elif stripped.startswith(('- ', '* ')):
+            if ordered:
+                flush()
+            bullets.append(stripped[2:])
+        elif re.match(r'^\d+\.\s+', stripped):
+            if bullets:
+                flush()
+            ordered.append(re.sub(r'^\d+\.\s+', '', stripped))
         else:
             flush()
-            parts.append(f'<p>{inline(line)}</p>')
+            parts.append(f'<p>{inline(stripped)}</p>')
+
+    if in_code and code_lines:
+        parts.append('<pre class="md-pre"><code>' + escape('\n'.join(code_lines)) + '</code></pre>')
     flush()
     return ''.join(parts) or '<p class="muted">Nothing recorded.</p>'
 
