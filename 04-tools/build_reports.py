@@ -994,8 +994,10 @@ def dashboard():
         done = total = pct = dem_count = rev_count = 0
         mistakes = []
         sprint_name = 'No Active Sprint'
-        p1 = 'Create a 7-day photography plan for a beginner. I have 30 minutes per Session.'
-        p2 = 'Use the files I attached to create a flexible 30-day data analysis plan.'
+        p1 = 'Create a 7-day Business English writing Sprint for clearer work emails and meeting summaries. I have 25 minutes per Session.'
+        p2 = 'Create a 10-day LLM fundamentals Sprint covering tokens, embeddings, RAG, and agent workflows for a beginner. I have 30 minutes per Session.'
+        p3 = 'Create a 7-day Finance fundamentals Sprint covering financial statements, cash flow, and risk basics. I have 25 minutes per Session.'
+        p4 = 'Use the local notes and PDFs I attached to identify key themes and create a flexible 14-day learning Sprint with daily recall practice.'
         dark_hero = (
             '<div class="dark-hero-num">0%</div>'
             '<div class="muted">Ready for your first Sprint</div>'
@@ -1007,11 +1009,15 @@ def dashboard():
         )
         chart_html = (
             '<h3 style="margin:0 0 8px;font-size:15px">Start your first learning plan</h3>'
-            '<p class="muted" style="margin:0 0 10px">Choose one of two local-first starting points and paste it into Agent chat:</p>'
-            f'<div class="prompt-card"><p><strong>Agent-generated course:</strong> “{escape(p1)}”</p>'
+            '<p class="muted" style="margin:0 0 10px">Pick a starter prompt below (or attach your own local study files) and paste it into Agent chat:</p>'
+            f'<div class="prompt-card"><p><strong>Language Learning:</strong> “{escape(p1)}”</p>'
             f'<button type="button" class="copy-btn" data-copy="{escape(p1, quote=True)}">Copy Prompt</button></div>'
-            f'<div class="prompt-card"><p><strong>Local files:</strong> “{escape(p2)}”</p>'
+            f'<div class="prompt-card"><p><strong>LLM Fundamentals:</strong> “{escape(p2)}”</p>'
             f'<button type="button" class="copy-btn" data-copy="{escape(p2, quote=True)}">Copy Prompt</button></div>'
+            f'<div class="prompt-card"><p><strong>Finance Basics:</strong> “{escape(p3)}”</p>'
+            f'<button type="button" class="copy-btn" data-copy="{escape(p3, quote=True)}">Copy Prompt</button></div>'
+            f'<div class="prompt-card"><p><strong>From Local Files:</strong> “{escape(p4)}”</p>'
+            f'<button type="button" class="copy-btn" data-copy="{escape(p4, quote=True)}">Copy Prompt</button></div>'
             '<p class="muted" style="margin-top:8px">The agent will create the plan and prepare the first lesson; you do not need to create folders or edit tables.</p>'
         )
         next_card_html = (

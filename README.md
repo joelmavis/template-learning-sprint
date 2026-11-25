@@ -25,16 +25,24 @@ You never need to create folders, hand-edit CSV files, or run scripts manuallyâ€
 In the left file tree, click **`dashboard.html`** to open the built-in HTML preview (no external browser or local server required). Once a Sprint starts, each Sprint also generates an interactive **`learning-report.html`** with mastery charts, 1-click answer templates, and a sortable/draggable mistake review table.
 
 ### Step 3: Start Learning in One Sentence
-Open the **Agent Chat** panel and copy-paste one of the starting prompts below (or attach local notes/PDFs/slides):
+Open the **Agent Chat** panel and copy-paste one of the 4 starter prompts below (or attach your own local notes/PDFs/slides):
 
-- **Agent-generated course:**
-  ```text
-  Create a 7-day photography plan for a beginner. I have 30 minutes per Session.
-  ```
-- **Learn from local files:**
-  ```text
-  Use the files I attached to create a flexible 30-day data analysis Sprint.
-  ```
+1. **Language Learning:**
+   ```text
+   Create a 7-day Business English writing Sprint for clearer work emails and meeting summaries. I have 25 minutes per Session.
+   ```
+2. **LLM Fundamentals:**
+   ```text
+   Create a 10-day LLM fundamentals Sprint covering tokens, embeddings, RAG, and agent workflows for a beginner. I have 30 minutes per Session.
+   ```
+3. **Finance Basics:**
+   ```text
+   Create a 7-day Finance fundamentals Sprint covering financial statements, cash flow, and risk basics. I have 25 minutes per Session.
+   ```
+4. **Generate Theme & Plan from Local Files:**
+   ```text
+   Use the local notes and PDFs I attached to identify key themes and create a flexible 14-day learning Sprint with daily recall practice.
+   ```
 
 The Agent asks only the minimal questions needed to clarify your goal, level, and available time, creates the Sprint files, prepares Lesson 1, and refreshes `dashboard.html`.
 
