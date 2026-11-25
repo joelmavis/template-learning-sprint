@@ -1,67 +1,85 @@
 # Daily Learning
 
-## Folder order
+> **Turn any learning goal or local study material into a guided, evidence-based learning sprint — all inside one local workspace.**
 
-- `01-workspace/` — the learner's active and future Sprints.
-- `03-templates/` — the clean Sprint starter.
-- `04-tools/` — Sprint creation, report generation and validation utilities.
-- `05-tests/` — a temporary-workspace smoke test; it does not contain sample courses.
+[![License: MIT](https://img.shields.io/badge/License-MIT-1f7a63.svg)](./LICENSE)
+[![Offline First](https://img.shields.io/badge/Reports-Single--File%20Offline-2e9e7e)](#)
 
-Daily Learning turns a learning goal or local study material into a guided learning journey. An agent plans the Sprint, teaches one lesson at a time, reviews your work, records useful knowledge and mistakes, and adjusts what comes next.
+Daily Learning turns a learning goal or local study material into a structured learning journey. An AI Agent plans your Sprint, teaches one lesson at a time, reviews your submitted practice, tracks real mastery and mistakes, and adapts what comes next.
 
-## Start in one sentence
+---
 
-Open this folder in puppyone Desktop and tell an agent what you want to learn. For example:
+## Quickstart Guide (3 Simple Steps)
 
-- “Create a 7-day photography plan for a beginner. I have 30 minutes per Session.”
-- “Use the files I attached to create a flexible 30-day data analysis Sprint.”
+You never need to create folders, hand-edit CSV files, or run scripts manually—the Agent manages everything for you.
 
-The agent may ask only the questions needed to set a useful goal, starting level, available time, and source mode. It creates the files, prepares the first lesson, and keeps them updated. You do not need to edit CSV files, move materials, or run scripts.
+### Step 1: Get This Template
+- **Option A (Recommended in Puppyone):** Click **"Use this template" (使用此模版)** on the Puppyone template details page to create a workspace immediately.
+- **Option B (Git Clone):** Clone this repository locally and open the folder:
+  ```bash
+  git clone https://github.com/joelmavis/template-learning-sprint.git
+  cd template-learning-sprint
+  ```
 
-## The learning loop
+### Step 2: Preview Your Dashboard Directly
+In the left file tree, click **`dashboard.html`** to open the built-in HTML preview (no external browser or local server required). Once a Sprint starts, each Sprint also generates an interactive **`learning-report.html`** with mastery charts, 1-click answer templates, and a sortable/draggable mistake review table.
 
-Every Sprint follows the same loop:
+### Step 3: Start Learning in One Sentence
+Open the **Agent Chat** panel and copy-paste one of the starting prompts below (or attach local notes/PDFs/slides):
+
+- **Agent-generated course:**
+  ```text
+  Create a 7-day photography plan for a beginner. I have 30 minutes per Session.
+  ```
+- **Learn from local files:**
+  ```text
+  Use the files I attached to create a flexible 30-day data analysis Sprint.
+  ```
+
+The Agent asks only the minimal questions needed to clarify your goal, level, and available time, creates the Sprint files, prepares Lesson 1, and refreshes `dashboard.html`.
+
+---
+
+## Common Agent Prompts Cheat Sheet
+
+| Goal | Where to Input | Prompt to Copy & Send |
+| :--- | :--- | :--- |
+| **Start a new course** | Agent Chat | `Create a 7-day <topic> plan for a beginner. I have 30 minutes per Session.` |
+| **Learn from local files** | Agent Chat | `Use the local files I attached to create a flexible learning Sprint.` |
+| **Continue where you left off** | Agent Chat | `Let’s continue Daily Learning.` |
+| **Submit practice answers** | Agent Chat | Click **Copy Answer Template** in `learning-report.html`, fill in your answers, and paste into Agent chat |
+| **Focus on weak points** | Agent Chat | `Review my unresolved mistakes and give me a short retrieval practice before the next lesson.` |
+| **Switch or adjust goal** | Agent Chat | `Adjust my remaining lessons to focus more on <subtopic> while keeping completed progress.` |
+
+---
+
+## The Learning Loop & Evidence Rules
+
+Every Sprint follows the same 5-step loop:
 
 **Plan → Learn → Practise → Review → Adapt**
 
-A lesson is not complete just because time passed. Your practice must be submitted and reviewed. “Mastered” is used only when the work provides evidence; otherwise the record says developing, needs review, or unassessed.
+- **Evidence over passive reading:** A lesson is never marked `completed` just because time passed or you read it—your practice must be submitted and reviewed in Agent chat.
+- **Honest mastery tracking:** **My Knowledge** shows only what reviewed practice has demonstrated (`Demonstrated`, `Still Developing`, `Needs Review`).
+- **Day vs. Session:** A **Day** is the suggested sequence in your plan; a **Session** is one complete lesson + practice + review cycle. You can pause between Sessions or finish multiple Sessions in one day.
+- **Seamless Agent handoff:** Say **“Let’s continue Daily Learning.”** anytime—even after switching Agents—and it resumes from your actual files and `handoff.md`.
+- **Local-first source modes:** Supports `agent_generated` courses and `attached_files` (readable local files). Pasting a URL is not a separate ingestion mode.
 
-## Continue later or switch agents
+---
 
-Say “Let’s continue Daily Learning.” The agent reads the active Sprint, the latest lesson, progress, mistakes, knowledge notes, and handoff before continuing. A different compatible file-based agent can use those same records; you should not have to explain the history again.
+## Folder Structure
 
-## Two ways to start
+- `dashboard.html` — Top-level interactive overview (preview directly in built-in HTML view).
+- `01-workspace/` — Your active and future Sprints (ignored by Git by default).
+- `03-templates/` — Clean Sprint starter scaffold.
+- `04-tools/` — Sprint creation, report generation (`build_reports.py`), and validation utilities.
+- `05-tests/` — Disposable-workspace smoke test (`smoke_test.py`); contains no committed sample courses.
 
-- **Agent-generated course:** describe what you want to learn and the agent creates an original course for your goal.
-- **Local files:** attach or select local material in the Agent conversation. The agent records which files it could read and preserves only the material you authorize. Attachment persistence and cross-agent visibility depend on the client; see `QA.md` for the tested boundary.
+---
 
-Daily Learning is local-first. Pasting a URL is not a separate course-input mode; save or export material as a local file when you want it used as course source material.
+## Maintainer Notes & Validation Modes
 
-## Progress and reports
+Agents automatically refresh reports with `python3 04-tools/build_reports.py` and verify workspace consistency with `python3 04-tools/validate_workspace.py`.
 
-Open `dashboard.html` for a simple overview. Each Sprint has `learning-report.html`, which puts progress, usable knowledge, weak points, and the next step first. Completed Session records remain in the report as expandable details.
-
-The report shows the current practice and a simple answer format. Submit answers in the Agent conversation; the Agent records the actual response, provides feedback, and updates the next Session. The HTML report is a readable record, not a separate form, so the workflow does not depend on preview links or local form storage.
-
-**My Knowledge** is evidence-based. It shows what reviewed practice has demonstrated, what is still developing, and what needs review. Lesson content does not appear there merely because it was displayed or read.
-
-**Day and Session are different.** A Day is the suggested position in a learning plan. A Session is one lesson, practice, and review cycle. You can pause between Sessions, move them to another day, or complete more than one in a day without changing the learning sequence.
-
-If links do not open inside the Desktop HTML preview, use the file path printed beside the link, open that file from the project tree, or ask the agent to open it. Navigation never depends on a clickable link alone.
-
-## Clean starting workspace
-
-The Dashboard starts empty and guides you to create the first Sprint through Agent chat. Real learning records belong in `01-workspace/sprints/` and are ignored by Git by default.
-
-The public repository does not include sample courses or committed learner records. `05-tests/smoke_test.py` creates a disposable local copy, starts a temporary Sprint, checks report generation and daily validation, confirms that release mode blocks the populated copy, and then removes the temporary data automatically.
-
-## Maintainer notes
-
-Agents refresh the dashboard and reports with `python3 04-tools/build_reports.py` and check consistency with `python3 04-tools/validate_workspace.py`. These are not end-user setup steps.
-
-## Two validation modes
-
-- **User Workspace Mode** is the normal learning workflow. `python3 04-tools/validate_workspace.py` accepts populated personal Sprints and checks lesson evidence, reports, mistakes, sources, and links.
-- **Template Release Mode** is only for maintainers preparing the blank public template. `python3 04-tools/check_public_release.py` intentionally blocks active Sprints, learner records, and a Dashboard generated from personal work.
-
-Agents must not run Template Release Mode after each lesson and must never delete learner records to make it pass. If this folder still points to GitHub or GitLab, move personal learning work to a private copy before adding submissions or attachments.
+- **User Workspace Mode:** `python3 04-tools/validate_workspace.py` accepts populated personal Sprints and checks lesson evidence, reports, mistakes, sources, and links.
+- **Template Release Mode:** `python3 04-tools/check_public_release.py` is reserved for maintainers preparing a blank public template and intentionally blocks active Sprints or personal learner records.
